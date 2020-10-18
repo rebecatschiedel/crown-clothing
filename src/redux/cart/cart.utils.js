@@ -2,7 +2,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     let flag = false;
 
     const array = cartItems.map(cartItem => {
-        if(cartItem.id === cartItemToAdd.id) {
+        if (cartItem.id === cartItemToAdd.id) {
             flag = true;
             return {...cartItem, quantity: cartItem.quantity + 1} 
         } else {
