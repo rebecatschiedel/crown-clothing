@@ -15,10 +15,10 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = async event => {
-        event.preventDefault();
+    handleSubmit = async e => {
+        e.preventDefault();
 
-        const {email, password} = this.state;
+        const { email, password } = this.state;
 
         try {
             await auth.signInWithEmailAndPassword(email, password);
@@ -42,34 +42,37 @@ class SignIn extends React.Component {
                 <span>Sign In with your email and password</span>
                     <form onSubmit={ this.handleSubmit }>
                         <FormInput 
-                        handleChange={ this.handleChange }
-                        name="email"
-                        type="email"
-                        value={ this.state.email }
-                        required
-                        label="EMAIL"
+                            handleChange={ this.handleChange }
+                            name="email"
+                            type="email"
+                            value={ this.state.email }
+                            label="EMAIL"
+                            required
                         />
                         <FormInput 
-                        handleChange={ this.handleChange }
-                        name="password"
-                        type="password"
-                        value={ this.state.password }
-                        required
-                        label="PASSWORD"
+                            handleChange={ this.handleChange }
+                            name="password"
+                            type="password"
+                            value={ this.state.password }
+                            label="PASSWORD"
+                            required
                         />
                         <div className="buttons">
-                        <CustomButton type="submit" value="Submit Form">
-                            SIGN IN
-                        </CustomButton>
-                        <CustomButton 
-                        type="button"
-                        isGoogleSignIn
-                        onClick={ signInWithGoogle }>
-                            SIGN IN WITH GOOGLE
-                        </CustomButton>
+                            <CustomButton 
+                                type="submit" 
+                                value="Submit Form"
+                            >
+                                SIGN IN
+                            </CustomButton>
+                            <CustomButton 
+                                type="button"
+                                isGoogleSignIn
+                                onClick={ signInWithGoogle }
+                            >
+                                SIGN IN WITH GOOGLE
+                            </CustomButton>
                         </div>
                     </form>
-
             </div>
         )
     }
