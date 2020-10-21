@@ -8,6 +8,8 @@ import SignInAndSignUp from './pages/SignInAndSignUp';
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from 'react-redux';
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from './redux/user/user.selectors';
+import Checkout from './pages/Checkout';
 
 
 class App extends React.Component {
@@ -47,14 +49,15 @@ class App extends React.Component {
           exact path="/signin" 
           render={() => this.props.currentUser ? (<Redirect to="/" />) : (<SignInAndSignUp />)} />
           <Route exact path="/shop" component={ Shop } />
+          <Route exact path="/checkout" component={ Checkout } />
         </Switch>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispatchToProps = dispatch => ({

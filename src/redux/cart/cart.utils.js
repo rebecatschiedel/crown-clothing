@@ -1,16 +1,16 @@
 export const addItemToCart = (cartItems, cartItemToAdd) => {
-    let flag = false;
+    let newItem = true;
 
-    const array = cartItems.map(cartItem => {
+    const updatedCart = cartItems.map(cartItem => {
         if (cartItem.id === cartItemToAdd.id) {
-            flag = true;
+            newItem = false;
             return {...cartItem, quantity: cartItem.quantity + 1} 
         } else {
             return cartItem;
         }
     });
 
-    return flag ? array : [...cartItems, {...cartItemToAdd, quantity: 1}];    
+    return newItem ? [...cartItems, {...cartItemToAdd, quantity: 1}] : updatedCart;    
 }
 
 // export const addItemToCart = (cartItems, cartItemToAdd) => {
